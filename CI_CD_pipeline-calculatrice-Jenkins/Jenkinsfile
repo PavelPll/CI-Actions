@@ -19,7 +19,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'pytest -v --junit-xml test-reports/results.xml CI_CD_pipeline-calculatrice-Jenkins/test_calc.py'
+                sh 'pytest -v --junit-xml CI_CD_pipeline-calculatrice-Jenkins/test-reports/results.xml CI_CD_pipeline-calculatrice-Jenkins/test_calc.py'
             }
             post {
                 always {
