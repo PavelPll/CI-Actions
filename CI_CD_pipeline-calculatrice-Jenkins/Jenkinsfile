@@ -43,7 +43,7 @@ pipeline {
             post {
                 success {
                     //archiveArtifacts "${env.BUILD_ID}/CI_CD_pipeline-calculatrice-Jenkins/dist/prog"
-                    archiveArtifacts "${env.BUILD_ID}/CI_CD_pipeline-calculatrice-Jenkins"
+                    archiveArtifacts "${env.BUILD_ID}/CI_CD_pipeline-calculatrice-Jenkins/**"
                 }
             }
         }
