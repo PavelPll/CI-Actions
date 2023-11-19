@@ -23,7 +23,25 @@ pipeline {
             }
             post {
                 always {
-                    junit "CI_CD_pipeline-calculatrice-Jenkins/test-reports/results.xml"
+                    junit "CI_CD_pipeline-calculatrice-Jenkins/test-reports/results.xml"            
+                }
+            }
+        }
+        stage('Deliver') {
+            agent any
+            environment {
+                VOLUME = '$(pwd)/CI_CD_pipeline-calculatrice-Jenkins:/src'
+                IMAGE = 'cdrx/pyinstaller-linux'
+            }
+            steps {
+                dir(path: env.BUILD_ID) {
+                    unstash(name: 'compiled-results')
+                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F prog.py'"
+                }
+            }
+            post {
+                success {
+                    archiveArtifacts "${env.BUILD_ID}/CI_CD_pipeline-calculatrice-Jenkins/dist/prog"
                 }
             }
         }
