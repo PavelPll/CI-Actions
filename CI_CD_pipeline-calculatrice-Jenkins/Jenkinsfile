@@ -9,6 +9,7 @@ pipeline {
             }
             steps {
                 sh 'python3.8 -m py_compile CI_CD_pipeline-calculatrice-Jenkins/prog.py CI_CD_pipeline-calculatrice-Jenkins/calc.py'
+                sh 'pwd'
                 stash(name: 'compiled-results', includes: 'CI_CD_pipeline-calculatrice-Jenkins/*.py*')
             }
         }
