@@ -52,8 +52,8 @@ pipeline {
                 success {
                     archiveArtifacts "${env.BUILD_ID}/sources/dist/prog"
                 }
-            }*/
-        }
+            }
+        }*/
         
     }
 }
