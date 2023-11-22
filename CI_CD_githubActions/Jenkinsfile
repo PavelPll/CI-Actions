@@ -54,7 +54,7 @@ pipeline {
                 dir(path: env.BUILD_ID) {
                 //    unstash(name: 'compiled-results')
                     // sh "sudo docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F prog.py'"
-                    sh 'print('Volume: ', VOLUME)'
+                    //sh 'print('Volume: ', VOLUME)'
                 }
                 sh 'echo "hello deliver"'
             }
