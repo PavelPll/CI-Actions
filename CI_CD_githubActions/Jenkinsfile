@@ -15,9 +15,9 @@ pipeline {
                 sh 'python3 --version'
                 sh 'sudo apt install python3-pip -y'
                 sh 'pip3 --version'
-                sh 'cd ./CI_CD_githubActions'
+                //sh 'cd ./CI_CD_githubActions'
                 sh 'ls -la'
-                sh 'pip3 install -r requirements.txt'
+                sh 'pip3 install -r CI_CD_githubActions/requirements.txt'
                 //stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
