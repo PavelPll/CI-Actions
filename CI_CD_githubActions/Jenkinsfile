@@ -63,13 +63,13 @@ pipeline {
                 }
                 sh 'echo "hello deliver"'
             }
-            post {
-                success {
+           // post {
+           //     success {
             //        archiveArtifacts "${env.BUILD_ID}/sources/dist/prog"
-                    archiveArtifacts "CI_CD_githubActions/__pycache__/**"
-                    sh 'echo "hello deliver2"'
-                }
-            }
+           //         archiveArtifacts "CI_CD_githubActions/__pycache__/**"
+           //         sh 'echo "hello deliver2"'
+           //     }
+           // }
         }
         
     }
