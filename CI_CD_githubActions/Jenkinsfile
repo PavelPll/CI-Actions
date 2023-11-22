@@ -18,6 +18,9 @@ pipeline {
                 //sh 'cd ./CI_CD_githubActions'
                 sh 'ls -la'
                 sh 'pip3 install -r CI_CD_githubActions/requirements.txt'
+
+                sh 'python3 -m py_compile CI_CD_githubActions/prog.py'
+                stash(name: 'compiled-results', includes: 'CI_CD_githubActions/*.py*')
                 //stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
@@ -33,5 +36,25 @@ pipeline {
                 }
             }
         }
+        stage('Deliver') {
+            agent { label 'aws-agent1' }
+            environment {
+                VOLUME = '$(pwd)/CI_CD_githubActions:/src'
+                IMAGE = 'cdrx/pyinstaller-linux'
+            }
+            /*
+            steps {
+                dir(path: env.BUILD_ID) {
+                //    unstash(name: 'compiled-results')
+                //    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F prog.py'"
+                //}
+            }
+            post {
+                success {
+                    archiveArtifacts "${env.BUILD_ID}/sources/dist/prog"
+                }
+            }*/
+        }
+        
     }
 }
