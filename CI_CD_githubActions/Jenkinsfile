@@ -21,7 +21,7 @@ pipeline {
                 sh 'pip3 install -r CI_CD_githubActions/requirements.txt'
 
                 sh 'python3 -m py_compile CI_CD_githubActions/prog.py'
-                stash(name: 'compiled-results', includes: 'CI_CD_githubActions/*.py*')
+                stash(name: 'compiled-results', includes: 'CI_CD_githubActions/prog.py*')
                 //stash(name: 'compiled-results', includes: 'sources/*.py*')
                 /* post {
                     success {
@@ -51,16 +51,16 @@ pipeline {
                 IMAGE = 'cdrx/pyinstaller-linux'
             }
             steps {
-                //dir(path: "CI_CD_githubActions/" + env.BUILD_ID) {
+                dir(path: "run/" + env.BUILD_ID) {
                 //dir(path: "CI_CD_githubActions/" ) {
-                    //unstash(name: 'compiled-results')
+                    unstash(name: 'compiled-results')
                     // sh "sudo docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F ../project2/CI_CD_githubActions/prog.py'"
                     //sh 'print('Volume: ', VOLUME)'
-                    sh "sudo docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F CI_CD_githubActions/prog.py'"
+                    sh "sudo docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F prog.py'"
                     sh 'pwd'
                     sh 'pwd'
                     sh 'ls -la'
-                //}
+                }
                 sh 'echo "hello deliver"'
             }
             post {
