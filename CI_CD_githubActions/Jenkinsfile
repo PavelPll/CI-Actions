@@ -2,8 +2,8 @@ pipeline {
     agent none
     stages {
         stage('Build') {
-            //agent { label 'aws-agent1' }
-            agent { label 'aws1' }
+            agent { label 'aws-agent1' }
+            //agent { label 'aws1' }
             //{
                 //docker {
                 //    image 'python:3.8-alpine3.16'
