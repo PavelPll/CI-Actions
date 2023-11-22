@@ -52,9 +52,10 @@ pipeline {
             }
             steps {
                 dir(path: env.BUILD_ID) {
-                //    unstash(name: 'compiled-results')
-                    // sh "sudo docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F prog.py'"
+                    unstash(name: 'compiled-results')
+                    // sh "sudo docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F ../project2/CI_CD_githubActions/prog.py'"
                     //sh 'print('Volume: ', VOLUME)'
+                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F prog.py'"
                     sh 'pwd'
                     sh 'pwd'
                     sh 'ls -la'
