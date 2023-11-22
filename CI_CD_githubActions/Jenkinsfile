@@ -16,5 +16,16 @@ pipeline {
                 //stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
+        stage('Test') {
+            agent { label 'aws-agent1' }
+            steps {
+                sh 'pytest -v --junit-xml test-reports/results.xml'
+            }
+            post {
+                always {
+                    junit "test-reports/results.xml"
+                }
+            }
+        }
     }
 }
