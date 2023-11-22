@@ -15,6 +15,7 @@ pipeline {
                 sh 'python3 --version'
                 sh 'sudo apt install python3-pip -y'
                 sh 'pip3 --version'
+                sh 'pip3 install -r requirements.txt'
                 //stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
