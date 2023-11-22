@@ -36,13 +36,12 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
+        /* stage('Deliver') {
             agent { label 'aws-agent1' }
             environment {
                 VOLUME = '$(pwd)/CI_CD_githubActions:/src'
                 IMAGE = 'cdrx/pyinstaller-linux'
             }
-            /*
             steps {
                 dir(path: env.BUILD_ID) {
                 //    unstash(name: 'compiled-results')
