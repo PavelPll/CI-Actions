@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             //agent { label 'aws-agent1' }
-            agent { label 'i-05e901c61999c4e1b' }
+            agent { label 'aws1' }
             //{
                 //docker {
                 //    image 'python:3.8-alpine3.16'
