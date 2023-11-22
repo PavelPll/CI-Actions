@@ -13,6 +13,7 @@ pipeline {
             steps {
                 //sh 'python3.8 -m py_compile sources/prog.py sources/calc.py'
                 sh 'python3 --version'
+                sh 'sudo apt install python3-pip -y'
                 //stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
