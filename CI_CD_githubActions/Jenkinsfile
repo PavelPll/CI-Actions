@@ -22,11 +22,13 @@ pipeline {
                 sh 'python3 -m py_compile CI_CD_githubActions/prog.py'
                 stash(name: 'compiled-results', includes: 'CI_CD_githubActions/*.py*')
                 //stash(name: 'compiled-results', includes: 'sources/*.py*')
-                //post {
-                //    success {
+                post {
+                    success {
                 //        archiveArtifacts "${env.BUILD_ID}/sources/dist/prog"
-                //    }
-                //}
+                        //archiveArtifacts "CI_CD_githubActions/__pycache__/prog.cpython-38.pyc"
+                        archiveArtifacts "CI_CD_githubActions/__pycache__/**"
+                    }
+                }
             }
         }
         stage('Test') {
