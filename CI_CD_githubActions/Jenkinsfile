@@ -47,7 +47,8 @@ pipeline {
         stage('Deliver') {
             agent { label 'aws-agent1' }
             environment {
-                VOLUME = '$(pwd)/CI_CD_githubActions:/src'
+                //VOLUME = '$(pwd)/CI_CD_githubActions:/src'
+                VOLUME = '$(pwd):/src'
                 IMAGE = 'cdrx/pyinstaller-linux'
             }
             steps {
