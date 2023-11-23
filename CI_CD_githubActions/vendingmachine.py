@@ -8,8 +8,6 @@ class Drink:
     def addNewDay(self):
         self.daysBeforeExpiration = self.daysBeforeExpiration - 1
 
-
-# +
 class Jus(Drink):
     def __init__(self, volume):
         self.daysBeforeExpiration = 7
@@ -23,11 +21,6 @@ class DataCola(Drink):
         if (self.beverageContainerType == 'bottle'): 
             self.volume = 500
             self.daysBeforeExpiration = 30
-
-
-
-
-
 
 class VendingMachine(Drink):
     def __init__(self):
@@ -50,8 +43,7 @@ class VendingMachine(Drink):
         for drink in self.contentOfVendingMachine:
             drink.daysBeforeExpiration = drink.daysBeforeExpiration - 1
 
-
-
+# ===========================================================================================
 # All unit tests see in vendingmachine_test.py file
 # This is the first try before writung unit tests in a proper way
 # Not executed during import
@@ -63,7 +55,6 @@ if __name__ == "__main__":
     print(jus1.daysBeforeExpiration)
     datacola1 = DataCola('can')
     print(datacola1.daysBeforeExpiration)
-
     d1 = VendingMachine()
     d1.addDrink(jus1)
     d1.addDrink(datacola1)
