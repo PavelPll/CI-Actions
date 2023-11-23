@@ -5,7 +5,7 @@ class Drink:
     def __init__(self, volume, daysBeforeExpiration):
         self.volume = volume
         self.daysBeforeExpiration = daysBeforeExpiration
-    def prochaine_jour(self):
+    def addNewDay(self):
         self.daysBeforeExpiration = self.daysBeforeExpiration - 1
 
 
@@ -34,7 +34,7 @@ class VendingMachine(Drink):
         self.contentOfVendingMachine = []
         self.numberOfDrinksInside = 0
         self.maxAllowedNumberOfDrinksInside = 10
-    def ajouter(self, Drink):
+    def addDrink(self, Drink):
         if (self.numberOfDrinksInside<self.maxAllowedNumberOfDrinksInside):
             self.contentOfVendingMachine.append(Drink)
             self.numberOfDrinksInside = self.numberOfDrinksInside + 1
@@ -46,29 +46,31 @@ class VendingMachine(Drink):
     def autoRemoveExpiredDrinks(self):
         self.contentOfVendingMachine = [drink for drink in self.contentOfVendingMachine if (drink.daysBeforeExpiration>=0)]
         self.numberOfDrinksInside = len(self.contentOfVendingMachine)
-    def prochaine_jour(self):
-        for el in self.contentOfVendingMachine:
-            el.daysBeforeExpiration = el.daysBeforeExpiration - 1
+    def addNewDay(self):
+        for drink in self.contentOfVendingMachine:
+            drink.daysBeforeExpiration = drink.daysBeforeExpiration - 1
 
 
-# First try before writung unit tests
+
+# All unit tests see in vendingmachine_test.py file
+# This is the first try before writung unit tests in a proper way
 # Not executed during import
-# All unit tests see in vendingmachine_test.py
+# All unit tests see in vendingmachine_test.py file
 if __name__ == "__main__":
     jus1 = Jus(1000)
     print(jus1.daysBeforeExpiration)
-    jus1.prochaine_jour()
+    jus1.addNewDay()
     print(jus1.daysBeforeExpiration)
     datacola1 = DataCola('can')
     print(datacola1.daysBeforeExpiration)
 
     d1 = VendingMachine()
-    d1.ajouter(jus1)
-    d1.ajouter(datacola1)
+    d1.addDrink(jus1)
+    d1.addDrink(datacola1)
     print(d1.numberOfDrinksInside)
     for i in range (20):
-        d1.contentOfVendingMachine[0].prochaine_jour()
-        d1.contentOfVendingMachine[1].prochaine_jour()
+        d1.contentOfVendingMachine[0].addNewDay()
+        d1.contentOfVendingMachine[1].addNewDay()
     print(d1.numberOfDrinksInside)
     d1.autoRemoveExpiredDrinks()
     print(d1.numberOfDrinksInside)
