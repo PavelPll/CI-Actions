@@ -13,9 +13,7 @@ pipeline {
                 sh 'pip3 install -r theProject/requirements.txt'
 
                 sh 'python3 -m py_compile theProject/run.py'
-                sh 'cd theProject'
-                stash(name: 'compiled-results', includes: 'run.py*')
-                sh 'cd ..'
+                stash(name: 'compiled-results', includes: 'theProject/run.py*')
             }
         }
         stage('Test') {
@@ -43,7 +41,7 @@ pipeline {
 
                     sh 'sudo docker image build ../ -t py2bin:latest'
                     //sh "sudo docker run --rm -v ${VOLUME} py2bin 'pyinstaller -F --hidden-import numpy --hidden-import tqdm theProject/run.py'"
-                //sh "sudo docker run --rm -v ${VOLUME} py2bin 'pyinstaller -F --hidden-import numpy --hidden-import tqdm ./run.py'"
+                sh "sudo docker run --rm -v ${VOLUME} py2bin 'pyinstaller -F --hidden-import numpy --hidden-import tqdm ./run.py'"
                     sh 'pwd'
                     sh 'pwd'
 
