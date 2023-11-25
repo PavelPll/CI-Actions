@@ -1,5 +1,5 @@
-from vendingmachine import Jus, DataCola, VendingMachine
 import numpy as np
+from vendingmachine import Jus, DataCola, VendingMachine
 from tqdm import tqdm
 from time import sleep
 
