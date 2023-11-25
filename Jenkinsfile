@@ -36,7 +36,7 @@ pipeline {
             agent { label 'aws-agent1' }
             steps {
                 //sh 'pytest -v --junit-xml test-reports/results.xml'
-                sh 'python3 -m pytest -v --junit-xml test-reports/results.xml ./CI_CD_githubActions'
+                sh 'python3 -m pytest -v --junit-xml test-reports/results.xml ./theProject'
             }
             post {
                 always {
