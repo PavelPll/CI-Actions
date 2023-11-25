@@ -21,7 +21,7 @@ pipeline {
             steps {
                 sh 'python3 -m pytest -v --junit-xml test-reports/results.xml ./theProject'
             }
-            post {**
+            post {
                 always {
                     junit "test-reports/results.xml"
                 }
