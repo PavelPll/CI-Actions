@@ -13,8 +13,7 @@ pipeline {
                 sh 'pip3 install -r theProject/requirements.txt'
 
                 sh 'python3 -m py_compile theProject/run.py'
-                stash(name: 'compiled-results', includes: 'theProject/run.py*')
-                stash(name: 'compiled-results', includes: 'theProject/vendingmachine*')
+                stash(name: 'compiled-results', includes: 'theProject/*.py*')
             }
         }
         stage('Test') {
@@ -22,7 +21,7 @@ pipeline {
             steps {
                 sh 'python3 -m pytest -v --junit-xml test-reports/results.xml ./theProject'
             }
-            post {
+            post {**
                 always {
                     junit "test-reports/results.xml"
                 }
