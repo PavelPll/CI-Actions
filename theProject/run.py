@@ -8,7 +8,8 @@ print("= Set the max allowed number of drinks in the VendingMachine =")
 print("=            to get some usefull info                        =")
 print("==============================================================")
 print("")
-maxAllowedNumberOfDrinksInside = int(input('Please set the max allowed number of drinks: '))
+message = "Please set the max allowed number of drinks: "
+maxAllowedNumberOfDrinksInside = int(input(message))
 vendingmachine1 = VendingMachine(maxAllowedNumberOfDrinksInside)
 
 # add 10 drinks to vendingmachine
