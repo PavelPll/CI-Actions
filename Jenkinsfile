@@ -37,7 +37,7 @@ pipeline {
                 //dir(path: "run/" + env.BUILD_ID) {
                 //dir(path: "CI_CD_githubActions/" ) {
                 dir(path: env.BUILD_ID) {
-                    // unstash(name: 'compiled-results')
+                     unstash(name: 'compiled-results')
 
                     sh 'sudo docker image build ../ -t py2bin:latest'
                     //sh "sudo docker run --rm -v ${VOLUME} py2bin 'pyinstaller -F --hidden-import numpy --hidden-import tqdm theProject/run.py'"
