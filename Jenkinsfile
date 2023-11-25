@@ -21,7 +21,7 @@ pipeline {
                 sh 'pip3 install -r theProject/requirements.txt'
 
                 sh 'python3 -m py_compile theProject/run.py'
-                stash(name: 'compiled-results', includes: 'theProject/prog.py*')
+                stash(name: 'compiled-results', includes: 'theProject/run.py*')
                 //stash(name: 'compiled-results', includes: 'sources/*.py*')
                 /* post {
                     success {
