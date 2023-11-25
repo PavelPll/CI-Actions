@@ -5,8 +5,8 @@ pipeline {
             agent { label 'aws-agent1' }
             steps {
                 sh 'sudo apt install docker.io -y'
-                sh 'python3 --version'
                 sh 'sudo apt install python3-pip -y'
+                sh 'python3 --version'
                 sh 'pip3 --version'
                 sh 'ls -la'
                 sh 'pip3 install -r theProject/requirements.txt'
