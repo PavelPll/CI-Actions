@@ -36,7 +36,7 @@ pipeline {
             steps {
                 //dir(path: "run/" + env.BUILD_ID) {
                 //dir(path: "CI_CD_githubActions/" ) {
-                dir(path: "env.BUILD_ID") {
+                dir(path: env.BUILD_ID) {
                     // unstash(name: 'compiled-results')
 
                     sh 'sudo docker image build ../ -t py2bin:latest'
