@@ -6,7 +6,7 @@ Obtained Jenkinsfile from git https://github.com/PavelPll/CI_CD.git
 [Pipeline] stage
 [Pipeline] { (Build)
 [Pipeline] node
-Running on EC2 (aws1) - AMI (i-07dc9db33e5c35966) in /home/ubuntu/workspace/project2
+Running on EC2 (aws1) - AMI (i-040aa1da301c66a27) in /home/ubuntu/workspace/project2
 [Pipeline] {
 [Pipeline] checkout
 Selected Git installation does not exist. Using Default
@@ -22,12 +22,12 @@ Fetching upstream changes from https://github.com/PavelPll/CI_CD.git
  > git config remote.origin.url https://github.com/PavelPll/CI_CD.git # timeout=10
  > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
 Avoid second fetch
-Checking out Revision cb435bc0d4397e67d958dfa3a49cfdb13bfe8880 (refs/remotes/origin/main)
+Checking out Revision 8600bb979d4caa3b8b2e849ab9b36c0b2ae80d9a (refs/remotes/origin/main)
  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
  > git config core.sparsecheckout # timeout=10
- > git checkout -f cb435bc0d4397e67d958dfa3a49cfdb13bfe8880 # timeout=10
-Commit message: "Update Dockerfile"
- > git rev-list --no-walk b829f854340c8e5dc829f3020a8082ed7a0bbc7c # timeout=10
+ > git checkout -f 8600bb979d4caa3b8b2e849ab9b36c0b2ae80d9a # timeout=10
+Commit message: "Update test_vendingmachine.py"
+ > git rev-list --no-walk cb435bc0d4397e67d958dfa3a49cfdb13bfe8880 # timeout=10
 [Pipeline] withEnv
 [Pipeline] {
 [Pipeline] sh
@@ -66,7 +66,7 @@ debconf: unable to initialize frontend: Readline
 debconf: (This frontend requires a controlling tty.)
 debconf: falling back to frontend: Teletype
 dpkg-preconfigure: unable to re-open stdin: 
-Fetched 63.2 MB in 1s (50.4 MB/s)
+Fetched 63.2 MB in 1s (49.8 MB/s)
 Selecting previously unselected package pigz.
 (Reading database ... 
 (Reading database ... 5%
@@ -233,7 +233,7 @@ debconf: unable to initialize frontend: Readline
 debconf: (This frontend requires a controlling tty.)
 debconf: falling back to frontend: Teletype
 dpkg-preconfigure: unable to re-open stdin: 
-Fetched 52.2 MB in 1s (51.5 MB/s)
+Fetched 52.2 MB in 1s (52.8 MB/s)
 Selecting previously unselected package binutils-common:amd64.
 (Reading database ... 
 (Reading database ... 5%
@@ -468,21 +468,20 @@ Python 3.8.10
 pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)
 [Pipeline] sh
 + ls -la
-total 32
-drwxrwxr-x 5 ubuntu ubuntu 4096 Nov 25 16:47 .
-drwxrwxr-x 4 ubuntu ubuntu 4096 Nov 25 16:47 ..
-drwxrwxr-x 8 ubuntu ubuntu 4096 Nov 25 16:47 .git
-drwxrwxr-x 3 ubuntu ubuntu 4096 Nov 25 16:47 .github
--rw-rw-r-- 1 ubuntu ubuntu   57 Nov 25 16:47 Dockerfile
--rw-rw-r-- 1 ubuntu ubuntu 1617 Nov 25 16:47 Jenkinsfile
--rw-rw-r-- 1 ubuntu ubuntu  445 Nov 25 16:47 README.md
-drwxrwxr-x 2 ubuntu ubuntu 4096 Nov 25 16:47 theProject
+total 72
+drwxrwxr-x 5 ubuntu ubuntu  4096 Nov 25 17:56 .
+drwxrwxr-x 4 ubuntu ubuntu  4096 Nov 25 17:56 ..
+drwxrwxr-x 8 ubuntu ubuntu  4096 Nov 25 17:56 .git
+drwxrwxr-x 3 ubuntu ubuntu  4096 Nov 25 17:56 .github
+-rw-rw-r-- 1 ubuntu ubuntu    57 Nov 25 17:56 Dockerfile
+-rw-rw-r-- 1 ubuntu ubuntu 39739 Nov 25 17:56 Jenkins_output.txt
+-rw-rw-r-- 1 ubuntu ubuntu  1617 Nov 25 17:56 Jenkinsfile
+-rw-rw-r-- 1 ubuntu ubuntu   445 Nov 25 17:56 README.md
+drwxrwxr-x 2 ubuntu ubuntu  4096 Nov 25 17:56 theProject
 [Pipeline] sh
 + pip3 install -r theProject/requirements.txt
 Collecting pytest
   Downloading pytest-7.4.3-py3-none-any.whl (325 kB)
-Collecting iniconfig
-  Downloading iniconfig-2.0.0-py3-none-any.whl (5.9 kB)
 Collecting packaging
   Downloading packaging-23.2-py3-none-any.whl (53 kB)
 Collecting pluggy<2.0,>=0.12
@@ -491,14 +490,16 @@ Collecting exceptiongroup>=1.0.0rc8; python_version < "3.11"
   Downloading exceptiongroup-1.2.0-py3-none-any.whl (16 kB)
 Collecting tomli>=1.0.0; python_version < "3.11"
   Downloading tomli-2.0.1-py3-none-any.whl (12 kB)
-Installing collected packages: iniconfig, packaging, pluggy, exceptiongroup, tomli, pytest
+Collecting iniconfig
+  Downloading iniconfig-2.0.0-py3-none-any.whl (5.9 kB)
+Installing collected packages: packaging, pluggy, exceptiongroup, tomli, iniconfig, pytest
   WARNING: The scripts py.test and pytest are installed in '/home/ubuntu/.local/bin' which is not on PATH.
   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
 Successfully installed exceptiongroup-1.2.0 iniconfig-2.0.0 packaging-23.2 pluggy-1.3.0 pytest-7.4.3 tomli-2.0.1
 [Pipeline] sh
 + python3 -m py_compile theProject/run.py
 [Pipeline] stash
-Stashed 4 file(s)
+Stashed 3 file(s)
 [Pipeline] }
 [Pipeline] // withEnv
 [Pipeline] }
@@ -508,7 +509,7 @@ Stashed 4 file(s)
 [Pipeline] stage
 [Pipeline] { (Test)
 [Pipeline] node
-Running on EC2 (aws1) - AMI (i-07dc9db33e5c35966) in /home/ubuntu/workspace/project2
+Running on EC2 (aws1) - AMI (i-040aa1da301c66a27) in /home/ubuntu/workspace/project2
 [Pipeline] {
 [Pipeline] checkout
 Selected Git installation does not exist. Using Default
@@ -521,34 +522,29 @@ Fetching upstream changes from https://github.com/PavelPll/CI_CD.git
  > git --version # timeout=10
  > git --version # 'git version 2.25.1'
  > git fetch --tags --force --progress -- https://github.com/PavelPll/CI_CD.git +refs/heads/*:refs/remotes/origin/* # timeout=10
-Checking out Revision cb435bc0d4397e67d958dfa3a49cfdb13bfe8880 (refs/remotes/origin/main)
-Commit message: "Update Dockerfile"
+Checking out Revision 8600bb979d4caa3b8b2e849ab9b36c0b2ae80d9a (refs/remotes/origin/main)
+Commit message: "Update test_vendingmachine.py"
 [Pipeline] withEnv
 [Pipeline] {
 [Pipeline] sh
  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
  > git config core.sparsecheckout # timeout=10
- > git checkout -f cb435bc0d4397e67d958dfa3a49cfdb13bfe8880 # timeout=10
+ > git checkout -f 8600bb979d4caa3b8b2e849ab9b36c0b2ae80d9a # timeout=10
 + python3 -m pytest -v --junit-xml test-reports/results.xml ./theProject
 ============================= test session starts ==============================
 platform linux -- Python 3.8.10, pytest-7.4.3, pluggy-1.3.0 -- /usr/bin/python3
 cachedir: .pytest_cache
 rootdir: /home/ubuntu/workspace/project2
-collecting ... collected 10 items
+collecting ... collected 5 items
 
-theProject/test_vendingmachine.py::test_drinkExpiration PASSED           [ 10%]
-theProject/test_vendingmachine.py::test_freeSpaceForDrinks PASSED        [ 20%]
-theProject/test_vendingmachine.py::test_removeExpiredDrinks[1-10] PASSED [ 30%]
-theProject/test_vendingmachine.py::test_removeExpiredDrinks[8-5] PASSED  [ 40%]
-theProject/test_vendingmachine.py::test_removeExpiredDrinks[61-0] PASSED [ 50%]
-theProject/vendingmachine_test.py::test_drinkExpiration PASSED           [ 60%]
-theProject/vendingmachine_test.py::test_freeSpaceForDrinks PASSED        [ 70%]
-theProject/vendingmachine_test.py::test_removeExpiredDrinks[1-10] PASSED [ 80%]
-theProject/vendingmachine_test.py::test_removeExpiredDrinks[8-5] PASSED  [ 90%]
-theProject/vendingmachine_test.py::test_removeExpiredDrinks[61-0] PASSED [100%]
+theProject/test_vendingmachine.py::test_drinkExpiration PASSED           [ 20%]
+theProject/test_vendingmachine.py::test_freeSpaceForDrinks PASSED        [ 40%]
+theProject/test_vendingmachine.py::test_removeExpiredDrinks[1-10] PASSED [ 60%]
+theProject/test_vendingmachine.py::test_removeExpiredDrinks[8-5] PASSED  [ 80%]
+theProject/test_vendingmachine.py::test_removeExpiredDrinks[61-0] PASSED [100%]
 
 - generated xml file: /home/ubuntu/workspace/project2/test-reports/results.xml -
-============================== 10 passed in 0.04s ==============================
+============================== 5 passed in 0.03s ===============================
 Post stage
 [Pipeline] junit
 Enregistrement des résultats des tests
@@ -562,7 +558,7 @@ Enregistrement des résultats des tests
 [Pipeline] stage
 [Pipeline] { (Deliver)
 [Pipeline] node
-Running on EC2 (aws1) - AMI (i-07dc9db33e5c35966) in /home/ubuntu/workspace/project2
+Running on EC2 (aws1) - AMI (i-040aa1da301c66a27) in /home/ubuntu/workspace/project2
 [Pipeline] {
 [Pipeline] checkout
 Selected Git installation does not exist. Using Default
@@ -571,30 +567,30 @@ No credentials specified
 Fetching changes from the remote Git repository
  > git rev-parse --resolve-git-dir /home/ubuntu/workspace/project2/.git # timeout=10
  > git config remote.origin.url https://github.com/PavelPll/CI_CD.git # timeout=10
-Fetching upstream changes from https://github.com/PavelPll/CI_CD.git
- > git --version # timeout=10
- > git --version # 'git version 2.25.1'
- > git fetch --tags --force --progress -- https://github.com/PavelPll/CI_CD.git +refs/heads/*:refs/remotes/origin/* # timeout=10
-Checking out Revision cb435bc0d4397e67d958dfa3a49cfdb13bfe8880 (refs/remotes/origin/main)
-Commit message: "Update Dockerfile"
+Checking out Revision 8600bb979d4caa3b8b2e849ab9b36c0b2ae80d9a (refs/remotes/origin/main)
+Commit message: "Update test_vendingmachine.py"
 [Pipeline] withEnv
 [Pipeline] {
 [Pipeline] withEnv
 [Pipeline] {
 [Pipeline] dir
-Running in /home/ubuntu/workspace/project2/86
+Running in /home/ubuntu/workspace/project2/87
 [Pipeline] {
 [Pipeline] unstash
+Fetching upstream changes from https://github.com/PavelPll/CI_CD.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+ > git fetch --tags --force --progress -- https://github.com/PavelPll/CI_CD.git +refs/heads/*:refs/remotes/origin/* # timeout=10
  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
  > git config core.sparsecheckout # timeout=10
- > git checkout -f cb435bc0d4397e67d958dfa3a49cfdb13bfe8880 # timeout=10
+ > git checkout -f 8600bb979d4caa3b8b2e849ab9b36c0b2ae80d9a # timeout=10
 [Pipeline] sh
 + sudo docker image build ../ -t py2bin:latest
 DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
             Install the buildx component to build images with BuildKit:
             https://docs.docker.com/go/buildx/
 
-Sending build context to Docker daemon  225.8kB
+Sending build context to Docker daemon  277.5kB
 
 Step 1/2 : FROM cdrx/pyinstaller-linux
 latest: Pulling from cdrx/pyinstaller-linux
@@ -609,14 +605,14 @@ d62ecaceda39: Waiting
 6d93b41cfc6b: Waiting
 491ca693221a: Waiting
 c17498b3317b: Waiting
-589bba2f1b36: Verifying Checksum
-589bba2f1b36: Download complete
 83251ac64627: Verifying Checksum
 83251ac64627: Download complete
-d62ecaceda39: Verifying Checksum
-d62ecaceda39: Download complete
+589bba2f1b36: Verifying Checksum
+589bba2f1b36: Download complete
 6d93b41cfc6b: Verifying Checksum
 6d93b41cfc6b: Download complete
+d62ecaceda39: Verifying Checksum
+d62ecaceda39: Download complete
 491ca693221a: Verifying Checksum
 491ca693221a: Download complete
 d8868e50ac4c: Verifying Checksum
@@ -634,7 +630,7 @@ Digest: sha256:26267c59316bcf253b3f885a638f0ebffb98bc4e125013b6a2b2113774170604
 Status: Downloaded newer image for cdrx/pyinstaller-linux:latest
  ---> 5601d84d1be0
 Step 2/2 : RUN pip install numpy tqdm
- ---> Running in 13ae99f869dd
+ ---> Running in 6a402787a2f2
 [91mbash: cannot set terminal process group (-1): Inappropriate ioctl for device
 bash: no job control in this shell
 [0mCollecting numpy
@@ -645,73 +641,73 @@ Installing collected packages: numpy, tqdm
 Successfully installed numpy-1.21.6 tqdm-4.66.1
 [91mWARNING: You are using pip version 19.3.1; however, version 23.3.1 is available.
 You should consider upgrading via the 'pip install --upgrade pip' command.
-[0mRemoving intermediate container 13ae99f869dd
- ---> e694a131be92
-Successfully built e694a131be92
+[0mRemoving intermediate container 6a402787a2f2
+ ---> c53c1965cdc7
+Successfully built c53c1965cdc7
 Successfully tagged py2bin:latest
 [Pipeline] sh
 + pwd
-+ sudo docker run --rm -v /home/ubuntu/workspace/project2/86:/src py2bin pyinstaller -F --hidden-import numpy --hidden-import tqdm theProject/run.py
++ sudo docker run --rm -v /home/ubuntu/workspace/project2/87:/src py2bin pyinstaller -F --hidden-import numpy --hidden-import tqdm theProject/run.py
 bash: cannot set terminal process group (-1): Inappropriate ioctl for device
 bash: no job control in this shell
 pyinstaller -F --hidden-import numpy --hidden-import tqdm theProject/run.py
-77 INFO: PyInstaller: 3.6
-78 INFO: Python: 3.7.5
-80 INFO: Platform: Linux-5.15.0-1048-aws-x86_64-with-debian-wheezy-sid
-80 INFO: wrote /src/run.spec
-94 INFO: UPX is available.
-95 INFO: Extending PYTHONPATH with paths
+97 INFO: PyInstaller: 3.6
+97 INFO: Python: 3.7.5
+99 INFO: Platform: Linux-5.15.0-1048-aws-x86_64-with-debian-wheezy-sid
+100 INFO: wrote /src/run.spec
+122 INFO: UPX is available.
+123 INFO: Extending PYTHONPATH with paths
 ['/src/theProject', '/src']
-96 INFO: checking Analysis
-96 INFO: Building Analysis because Analysis-00.toc is non existent
-96 INFO: Initializing module dependency graph...
-98 INFO: Caching module graph hooks...
-104 INFO: Analyzing base_library.zip ...
-3539 INFO: Caching module dependency graph...
-3636 INFO: running Analysis Analysis-00.toc
-3660 INFO: Analyzing /src/theProject/run.py
-4095 INFO: Processing pre-find module path hook   distutils
-4096 INFO: distutils: retargeting to non-venv dir '/root/.pyenv/versions/3.7.5/lib/python3.7'
-5298 INFO: Processing pre-safe import module hook   setuptools.extern.six.moves
-5685 INFO: Processing pre-find module path hook   site
-5686 INFO: site: retargeting to fake-dir '/root/.pyenv/versions/3.7.5/lib/python3.7/site-packages/PyInstaller/fake-modules'
-8428 INFO: Processing module hooks...
-8429 INFO: Loading module hook "hook-encodings.py"...
-8487 INFO: Loading module hook "hook-setuptools.py"...
-9048 INFO: Loading module hook "hook-pkg_resources.py"...
-9267 INFO: Processing pre-safe import module hook   win32com
-9475 INFO: Excluding import '__main__'
-9477 INFO:   Removing import of __main__ from module pkg_resources
-9477 INFO: Loading module hook "hook-numpy.py"...
-9478 INFO: Loading module hook "hook-distutils.py"...
-9482 INFO: Loading module hook "hook-sysconfig.py"...
-9491 INFO: Loading module hook "hook-lib2to3.py"...
-9494 INFO: Loading module hook "hook-pydoc.py"...
-9495 INFO: Loading module hook "hook-xml.py"...
-9545 INFO: Loading module hook "hook-numpy.core.py"...
-9684 INFO: Looking for ctypes DLLs
-9779 INFO: Analyzing run-time hooks ...
-9789 INFO: Including run-time hook 'pyi_rth_multiprocessing.py'
-9794 INFO: Including run-time hook 'pyi_rth_pkgres.py'
-9806 INFO: Looking for dynamic libraries
-10539 INFO: Looking for eggs
-10539 INFO: Using Python library /root/.pyenv/versions/3.7.5/lib/libpython3.7m.so.1.0
-10554 INFO: Warnings written to /src/build/run/warn-run.txt
-10623 INFO: Graph cross-reference written to /src/build/run/xref-run.html
-10650 INFO: checking PYZ
-10651 INFO: Building PYZ because PYZ-00.toc is non existent
-10651 INFO: Building PYZ (ZlibArchive) /src/build/run/PYZ-00.pyz
-11486 INFO: Building PYZ (ZlibArchive) /src/build/run/PYZ-00.pyz completed successfully.
-11501 INFO: checking PKG
-11501 INFO: Building PKG because PKG-00.toc is non existent
-11501 INFO: Building PKG (CArchive) PKG-00.pkg
-26088 INFO: Building PKG (CArchive) PKG-00.pkg completed successfully.
-26092 INFO: Bootloader /root/.pyenv/versions/3.7.5/lib/python3.7/site-packages/PyInstaller/bootloader/Linux-64bit/run
-26092 INFO: checking EXE
-26093 INFO: Building EXE because EXE-00.toc is non existent
-26093 INFO: Building EXE from EXE-00.toc
-26094 INFO: Appending archive to ELF section in EXE /src/dist/run
-26261 INFO: Building EXE from EXE-00.toc completed successfully.
+124 INFO: checking Analysis
+124 INFO: Building Analysis because Analysis-00.toc is non existent
+124 INFO: Initializing module dependency graph...
+126 INFO: Caching module graph hooks...
+132 INFO: Analyzing base_library.zip ...
+4071 INFO: Caching module dependency graph...
+4180 INFO: running Analysis Analysis-00.toc
+4217 INFO: Analyzing /src/theProject/run.py
+4699 INFO: Processing pre-find module path hook   distutils
+4701 INFO: distutils: retargeting to non-venv dir '/root/.pyenv/versions/3.7.5/lib/python3.7'
+6010 INFO: Processing pre-safe import module hook   setuptools.extern.six.moves
+6442 INFO: Processing pre-find module path hook   site
+6444 INFO: site: retargeting to fake-dir '/root/.pyenv/versions/3.7.5/lib/python3.7/site-packages/PyInstaller/fake-modules'
+9411 INFO: Processing module hooks...
+9412 INFO: Loading module hook "hook-encodings.py"...
+9473 INFO: Loading module hook "hook-setuptools.py"...
+10181 INFO: Loading module hook "hook-pkg_resources.py"...
+10645 INFO: Processing pre-safe import module hook   win32com
+10652 INFO: Excluding import '__main__'
+10653 INFO:   Removing import of __main__ from module pkg_resources
+10654 INFO: Loading module hook "hook-numpy.py"...
+10655 INFO: Loading module hook "hook-distutils.py"...
+10659 INFO: Loading module hook "hook-sysconfig.py"...
+10670 INFO: Loading module hook "hook-lib2to3.py"...
+10674 INFO: Loading module hook "hook-pydoc.py"...
+10675 INFO: Loading module hook "hook-xml.py"...
+10729 INFO: Loading module hook "hook-numpy.core.py"...
+10888 INFO: Looking for ctypes DLLs
+11021 INFO: Analyzing run-time hooks ...
+11032 INFO: Including run-time hook 'pyi_rth_multiprocessing.py'
+11038 INFO: Including run-time hook 'pyi_rth_pkgres.py'
+11051 INFO: Looking for dynamic libraries
+11872 INFO: Looking for eggs
+11873 INFO: Using Python library /root/.pyenv/versions/3.7.5/lib/libpython3.7m.so.1.0
+11888 INFO: Warnings written to /src/build/run/warn-run.txt
+11961 INFO: Graph cross-reference written to /src/build/run/xref-run.html
+11991 INFO: checking PYZ
+11991 INFO: Building PYZ because PYZ-00.toc is non existent
+11992 INFO: Building PYZ (ZlibArchive) /src/build/run/PYZ-00.pyz
+12862 INFO: Building PYZ (ZlibArchive) /src/build/run/PYZ-00.pyz completed successfully.
+12877 INFO: checking PKG
+12878 INFO: Building PKG because PKG-00.toc is non existent
+12878 INFO: Building PKG (CArchive) PKG-00.pkg
+27923 INFO: Building PKG (CArchive) PKG-00.pkg completed successfully.
+27932 INFO: Bootloader /root/.pyenv/versions/3.7.5/lib/python3.7/site-packages/PyInstaller/bootloader/Linux-64bit/run
+27936 INFO: checking EXE
+27936 INFO: Building EXE because EXE-00.toc is non existent
+27937 INFO: Building EXE from EXE-00.toc
+27939 INFO: Appending archive to ELF section in EXE /src/dist/run
+28241 INFO: Building EXE from EXE-00.toc completed successfully.
 [Pipeline] }
 [Pipeline] // dir
 Post stage
@@ -727,3 +723,4 @@ Archiving artifacts
 [Pipeline] // stage
 [Pipeline] End of Pipeline
 Finished: SUCCESS
+
