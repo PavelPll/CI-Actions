@@ -7,9 +7,12 @@ class Drink:
         self.daysBeforeExpiration = daysBeforeExpiration
     def addNewDay(self):
         self.daysBeforeExpiration = self.daysBeforeExpiration - 1
+    def getVolume(self):
+        return self.volume
 
 class Jus(Drink):
     def __init__(self, volume):
+        self.volume = volume
         self.daysBeforeExpiration = 7
 
 class DataCola(Drink):
@@ -23,10 +26,12 @@ class DataCola(Drink):
             self.daysBeforeExpiration = 30
 
 class VendingMachine(Drink):
-    def __init__(self):
+    def __init__(self, maxAllowedNumberOfDrinksInside = 10):
         self.contentOfVendingMachine = []
         self.numberOfDrinksInside = 0
-        self.maxAllowedNumberOfDrinksInside = 10
+        self.maxAllowedNumberOfDrinksInside = maxAllowedNumberOfDrinksInside
+    def getNumberOfDrinksInside(self): 
+        return self.numberOfDrinksInside
     def addDrink(self, Drink):
         if (self.numberOfDrinksInside<self.maxAllowedNumberOfDrinksInside):
             self.contentOfVendingMachine.append(Drink)
@@ -42,6 +47,11 @@ class VendingMachine(Drink):
     def addNewDay(self):
         for drink in self.contentOfVendingMachine:
             drink.daysBeforeExpiration = drink.daysBeforeExpiration - 1
+    def getTotalVolume(self):
+        self.total_volume = 0
+        for drink in self.contentOfVendingMachine:
+            self.total_volume = self.total_volume + drink.getVolume()
+        return self.total_volume
 
 # ===========================================================================================
 # All unit tests see in vendingmachine_test.py file
