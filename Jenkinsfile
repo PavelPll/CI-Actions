@@ -58,7 +58,8 @@ pipeline {
                     // sh "sudo docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F ../project2/CI_CD_githubActions/prog.py'"
                     //sh 'print('Volume: ', VOLUME)'
                     //sh "sudo docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F ../../CI_CD_githubActions/prog.py'"
-                    sh "sudo docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F theProject/run.py'"
+                    sh 'sudo docker image build . -t py2bin:latest'
+                    sh "sudo docker run --rm -v ${VOLUME} py2bin 'pyinstaller -F --hidden-import numpy --hidden-import tqdm theProject/run.py'"
                     sh 'pwd'
                     //sh 'pwd'
                     //sh 'ls -la'
