@@ -36,7 +36,8 @@ for days in range(100):
     if days % 20 == 0:
         # get total volume of drinks
         totalVolume = vendingmachine1.getTotalVolume()
-        print("After {} days the total mass of not expired drinks is {} kg".format(days, totalVolume/100))
+        message = "After {} days the total mass of not expired drinks is {} kg"
+        print(message.format(days, totalVolume/100))
     vendingmachine1.addNewDay()
     # remove expired drinks
     vendingmachine1.autoRemoveExpiredDrinks()
