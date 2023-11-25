@@ -1,9 +1,10 @@
-from vendingmachine import VendingMachine, Jus, DataCola, noFreeSpaceInVendingMachine
+from vendingmachine import VendingMachine, Jus, DataCola
 from vendingmachine import noFreeSpaceInVendingMachine
 import pytest
 
 # Initialize two drink instances jus1 and datacola1
 jus1 = Jus(1000)
+
 @pytest.fixture
 def datacola1():
     return(DataCola('can'))
