@@ -66,13 +66,14 @@ pipeline {
                 sh 'pwd'
                 sh 'echo "hello deliver"'
             }
-           // post {
-           //     success {
+            post {
+                success {
             //        archiveArtifacts "${env.BUILD_ID}/sources/dist/prog"
+                     archiveArtifacts "$dist/run"
            //         archiveArtifacts "CI_CD_githubActions/__pycache__/**"
            //         sh 'echo "hello deliver2"'
-           //     }
-           // }
+                }
+            }
         }
         
     }
