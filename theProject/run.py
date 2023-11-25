@@ -17,8 +17,8 @@ print("Filling the vendingmachine ...")
 for nDrinks in tqdm(range(maxAllowedNumberOfDrinksInside)):
     rnd1 = np.random.randint(2, size=1)
     sleep(0.01)
-    if rnd1==0:
-        vendingmachine1.addDrink(Jus(800)) # expired after 7 days
+    if rnd1 == 0:
+        vendingmachine1.addDrink(Jus(800))  # expired after 7 days
     else:
         rnd2 = np.random.randint(2, size=1)
         if rnd2==0:
