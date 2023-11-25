@@ -18,10 +18,10 @@ pipeline {
                 sh 'pip3 --version'
                 //sh 'cd ./CI_CD_githubActions'
                 sh 'ls -la'
-                sh 'pip3 install -r CI_CD_githubActions/requirements.txt'
+                sh 'pip3 install -r theProject/requirements.txt'
 
-                sh 'python3 -m py_compile CI_CD_githubActions/prog.py'
-                stash(name: 'compiled-results', includes: 'CI_CD_githubActions/prog.py*')
+                sh 'python3 -m py_compile theProject/run.py'
+                stash(name: 'compiled-results', includes: 'theProject/prog.py*')
                 //stash(name: 'compiled-results', includes: 'sources/*.py*')
                 /* post {
                     success {
@@ -58,7 +58,7 @@ pipeline {
                     // sh "sudo docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F ../project2/CI_CD_githubActions/prog.py'"
                     //sh 'print('Volume: ', VOLUME)'
                     //sh "sudo docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F ../../CI_CD_githubActions/prog.py'"
-                    sh "sudo docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F CI_CD_githubActions/prog.py'"
+                    sh "sudo docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F theProject/run.py'"
                     sh 'pwd'
                     //sh 'pwd'
                     //sh 'ls -la'
