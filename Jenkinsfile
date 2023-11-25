@@ -13,9 +13,9 @@ pipeline {
                 sh 'pip3 install -r theProject/requirements.txt'
 
                 sh 'python3 -m py_compile theProject/run.py'
-                sh 'cd theProject'
-                stash(name: 'compiled-results', includes: 'run.py*')
-                sh 'cd ..'
+                //sh 'cd theProject'
+                stash(name: 'compiled-results', includes: 'theProject/run.py*')
+                //sh 'cd ..'
             }
         }
         stage('Test') {
