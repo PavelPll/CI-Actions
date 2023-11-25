@@ -50,11 +50,11 @@ pipeline {
                 sh 'pwd'
                 sh 'echo "hello deliver"'
             }
-           // post {
-           //     success {
-           //          archiveArtifacts "dist/run"
-          //      }
-           // }
+            post {
+                success {
+                     archiveArtifacts env.BUILD_ID + "/dist/run"
+                }
+            }
         }
         
     }
