@@ -21,7 +21,7 @@ for nDrinks in tqdm(range(maxAllowedNumberOfDrinksInside)):
         vendingmachine1.addDrink(Jus(800))  # expired after 7 days
     else:
         rnd2 = np.random.randint(2, size=1)
-        if rnd2==0:
+        if rnd2 == 0:
             vendingmachine1.addDrink(DataCola('can')) # expired after 60 days
         else:
             vendingmachine1.addDrink(DataCola('bottle')) # expired after 30 days
@@ -30,7 +30,7 @@ print("")
 
 # see time evolution
 for days in range(100):
-    if days%20==0:
+    if days%20 == 0:
         totalVolume = vendingmachine1.getTotalVolume() # get total volume of drinks
         print("After {} days the total mass of not expired drinks is {} kg".format(days, totalVolume/100))
     vendingmachine1.addNewDay()
