@@ -1,0 +1,729 @@
+Console Output
+
+Démarré par l'utilisateur pavel
+Obtained Jenkinsfile from git https://github.com/PavelPll/CI_CD.git
+[Pipeline] Start of Pipeline
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] node
+Running on EC2 (aws1) - AMI (i-07dc9db33e5c35966) in /home/ubuntu/workspace/project2
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/PavelPll/CI_CD.git
+ > git init /home/ubuntu/workspace/project2 # timeout=10
+Fetching upstream changes from https://github.com/PavelPll/CI_CD.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+ > git fetch --tags --force --progress -- https://github.com/PavelPll/CI_CD.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/PavelPll/CI_CD.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Checking out Revision cb435bc0d4397e67d958dfa3a49cfdb13bfe8880 (refs/remotes/origin/main)
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f cb435bc0d4397e67d958dfa3a49cfdb13bfe8880 # timeout=10
+Commit message: "Update Dockerfile"
+ > git rev-list --no-walk b829f854340c8e5dc829f3020a8082ed7a0bbc7c # timeout=10
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ sudo apt install docker.io -y
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  bridge-utils containerd dns-root-data dnsmasq-base libidn11 pigz runc
+  ubuntu-fan
+Suggested packages:
+  ifupdown aufs-tools cgroupfs-mount | cgroup-lite debootstrap docker-doc
+  rinse zfs-fuse | zfsutils
+The following NEW packages will be installed:
+  bridge-utils containerd dns-root-data dnsmasq-base docker.io libidn11 pigz
+  runc ubuntu-fan
+0 upgraded, 9 newly installed, 0 to remove and 22 not upgraded.
+Need to get 63.2 MB of archives.
+After this operation, 267 MB of additional disk space will be used.
+Get:1 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/universe amd64 pigz amd64 2.4-1 [57.4 kB]
+Get:2 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 bridge-utils amd64 1.6-2ubuntu1 [30.5 kB]
+Get:3 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 runc amd64 1.1.7-0ubuntu1~20.04.1 [3819 kB]
+Get:4 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 containerd amd64 1.7.2-0ubuntu1~20.04.1 [32.5 MB]
+Get:5 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 dns-root-data all 2019052802 [5300 B]
+Get:6 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 libidn11 amd64 1.33-2.2ubuntu2 [46.2 kB]
+Get:7 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 dnsmasq-base amd64 2.80-1.1ubuntu1.7 [315 kB]
+Get:8 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/universe amd64 docker.io amd64 24.0.5-0ubuntu1~20.04.1 [26.4 MB]
+Get:9 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 ubuntu-fan all 0.12.13ubuntu0.1 [34.4 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+Fetched 63.2 MB in 1s (50.4 MB/s)
+Selecting previously unselected package pigz.
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 63787 files and directories currently installed.)
+Preparing to unpack .../0-pigz_2.4-1_amd64.deb ...
+Unpacking pigz (2.4-1) ...
+Selecting previously unselected package bridge-utils.
+Preparing to unpack .../1-bridge-utils_1.6-2ubuntu1_amd64.deb ...
+Unpacking bridge-utils (1.6-2ubuntu1) ...
+Selecting previously unselected package runc.
+Preparing to unpack .../2-runc_1.1.7-0ubuntu1~20.04.1_amd64.deb ...
+Unpacking runc (1.1.7-0ubuntu1~20.04.1) ...
+Selecting previously unselected package containerd.
+Preparing to unpack .../3-containerd_1.7.2-0ubuntu1~20.04.1_amd64.deb ...
+Unpacking containerd (1.7.2-0ubuntu1~20.04.1) ...
+Selecting previously unselected package dns-root-data.
+Preparing to unpack .../4-dns-root-data_2019052802_all.deb ...
+Unpacking dns-root-data (2019052802) ...
+Selecting previously unselected package libidn11:amd64.
+Preparing to unpack .../5-libidn11_1.33-2.2ubuntu2_amd64.deb ...
+Unpacking libidn11:amd64 (1.33-2.2ubuntu2) ...
+Selecting previously unselected package dnsmasq-base.
+Preparing to unpack .../6-dnsmasq-base_2.80-1.1ubuntu1.7_amd64.deb ...
+Unpacking dnsmasq-base (2.80-1.1ubuntu1.7) ...
+Selecting previously unselected package docker.io.
+Preparing to unpack .../7-docker.io_24.0.5-0ubuntu1~20.04.1_amd64.deb ...
+Unpacking docker.io (24.0.5-0ubuntu1~20.04.1) ...
+Selecting previously unselected package ubuntu-fan.
+Preparing to unpack .../8-ubuntu-fan_0.12.13ubuntu0.1_all.deb ...
+Unpacking ubuntu-fan (0.12.13ubuntu0.1) ...
+Setting up runc (1.1.7-0ubuntu1~20.04.1) ...
+Setting up dns-root-data (2019052802) ...
+Setting up libidn11:amd64 (1.33-2.2ubuntu2) ...
+Setting up bridge-utils (1.6-2ubuntu1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+Setting up pigz (2.4-1) ...
+Setting up containerd (1.7.2-0ubuntu1~20.04.1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /lib/systemd/system/containerd.service.
+Setting up docker.io (24.0.5-0ubuntu1~20.04.1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+Adding group `docker' (GID 120) ...
+Done.
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /lib/systemd/system/docker.service.
+Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /lib/systemd/system/docker.socket.
+Setting up dnsmasq-base (2.80-1.1ubuntu1.7) ...
+Setting up ubuntu-fan (0.12.13ubuntu0.1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/ubuntu-fan.service → /lib/systemd/system/ubuntu-fan.service.
+Processing triggers for systemd (245.4-4ubuntu3.22) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for dbus (1.12.16-2ubuntu2.3) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.12) ...
+[Pipeline] sh
++ sudo apt install python3-pip -y
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu build-essential cpp cpp-9
+  dpkg-dev fakeroot g++ g++-9 gcc gcc-9 gcc-9-base libalgorithm-diff-perl
+  libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan5 libatomic1
+  libbinutils libc-dev-bin libc6-dev libcc1-0 libcrypt-dev libctf-nobfd0
+  libctf0 libdpkg-perl libexpat1-dev libfakeroot libfile-fcntllock-perl
+  libgcc-9-dev libgomp1 libisl22 libitm1 liblsan0 libmpc3 libpython3-dev
+  libpython3.8-dev libquadmath0 libstdc++-9-dev libtsan0 libubsan1
+  linux-libc-dev make manpages-dev python-pip-whl python3-dev python3-wheel
+  python3.8-dev zlib1g-dev
+Suggested packages:
+  binutils-doc cpp-doc gcc-9-locales debian-keyring g++-multilib
+  g++-9-multilib gcc-9-doc gcc-multilib autoconf automake libtool flex bison
+  gdb gcc-doc gcc-9-multilib glibc-doc bzr libstdc++-9-doc make-doc
+The following NEW packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu build-essential cpp cpp-9
+  dpkg-dev fakeroot g++ g++-9 gcc gcc-9 gcc-9-base libalgorithm-diff-perl
+  libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan5 libatomic1
+  libbinutils libc-dev-bin libc6-dev libcc1-0 libcrypt-dev libctf-nobfd0
+  libctf0 libdpkg-perl libexpat1-dev libfakeroot libfile-fcntllock-perl
+  libgcc-9-dev libgomp1 libisl22 libitm1 liblsan0 libmpc3 libpython3-dev
+  libpython3.8-dev libquadmath0 libstdc++-9-dev libtsan0 libubsan1
+  linux-libc-dev make manpages-dev python-pip-whl python3-dev python3-pip
+  python3-wheel python3.8-dev zlib1g-dev
+0 upgraded, 50 newly installed, 0 to remove and 22 not upgraded.
+Need to get 52.2 MB of archives.
+After this operation, 228 MB of additional disk space will be used.
+Get:1 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 binutils-common amd64 2.34-6ubuntu1.6 [207 kB]
+Get:2 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libbinutils amd64 2.34-6ubuntu1.6 [473 kB]
+Get:3 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libctf-nobfd0 amd64 2.34-6ubuntu1.6 [47.4 kB]
+Get:4 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libctf0 amd64 2.34-6ubuntu1.6 [46.6 kB]
+Get:5 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 binutils-x86-64-linux-gnu amd64 2.34-6ubuntu1.6 [1613 kB]
+Get:6 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 binutils amd64 2.34-6ubuntu1.6 [3376 B]
+Get:7 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libc-dev-bin amd64 2.31-0ubuntu9.12 [71.6 kB]
+Get:8 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 linux-libc-dev amd64 5.4.0-167.184 [1117 kB]
+Get:9 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 libcrypt-dev amd64 1:4.4.10-10ubuntu4 [104 kB]
+Get:10 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libc6-dev amd64 2.31-0ubuntu9.12 [2519 kB]
+Get:11 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 gcc-9-base amd64 9.4.0-1ubuntu1~20.04.2 [18.9 kB]
+Get:12 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 libisl22 amd64 0.22.1-1 [592 kB]
+Get:13 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 libmpc3 amd64 1.1.0-1 [40.8 kB]
+Get:14 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 cpp-9 amd64 9.4.0-1ubuntu1~20.04.2 [7502 kB]
+Get:15 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 cpp amd64 4:9.3.0-1ubuntu2 [27.6 kB]
+Get:16 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libcc1-0 amd64 10.5.0-1ubuntu1~20.04 [48.8 kB]
+Get:17 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libgomp1 amd64 10.5.0-1ubuntu1~20.04 [102 kB]
+Get:18 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libitm1 amd64 10.5.0-1ubuntu1~20.04 [26.2 kB]
+Get:19 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libatomic1 amd64 10.5.0-1ubuntu1~20.04 [9284 B]
+Get:20 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libasan5 amd64 9.4.0-1ubuntu1~20.04.2 [2752 kB]
+Get:21 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 liblsan0 amd64 10.5.0-1ubuntu1~20.04 [835 kB]
+Get:22 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libtsan0 amd64 10.5.0-1ubuntu1~20.04 [2016 kB]
+Get:23 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libubsan1 amd64 10.5.0-1ubuntu1~20.04 [785 kB]
+Get:24 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libquadmath0 amd64 10.5.0-1ubuntu1~20.04 [146 kB]
+Get:25 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libgcc-9-dev amd64 9.4.0-1ubuntu1~20.04.2 [2359 kB]
+Get:26 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 gcc-9 amd64 9.4.0-1ubuntu1~20.04.2 [8276 kB]
+Get:27 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 gcc amd64 4:9.3.0-1ubuntu2 [5208 B]
+Get:28 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libstdc++-9-dev amd64 9.4.0-1ubuntu1~20.04.2 [1722 kB]
+Get:29 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 g++-9 amd64 9.4.0-1ubuntu1~20.04.2 [8421 kB]
+Get:30 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 g++ amd64 4:9.3.0-1ubuntu2 [1604 B]
+Get:31 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 make amd64 4.2.1-1.2 [162 kB]
+Get:32 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libdpkg-perl all 1.19.7ubuntu3.2 [231 kB]
+Get:33 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 dpkg-dev all 1.19.7ubuntu3.2 [679 kB]
+Get:34 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 build-essential amd64 12.8ubuntu1.1 [4664 B]
+Get:35 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 libfakeroot amd64 1.24-1 [25.7 kB]
+Get:36 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 fakeroot amd64 1.24-1 [62.6 kB]
+Get:37 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 libalgorithm-diff-perl all 1.19.03-2 [46.6 kB]
+Get:38 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 libalgorithm-diff-xs-perl amd64 0.04-6 [11.3 kB]
+Get:39 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 libalgorithm-merge-perl all 0.08-3 [12.0 kB]
+Get:40 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libexpat1-dev amd64 2.2.9-1ubuntu0.6 [116 kB]
+Get:41 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 libfile-fcntllock-perl amd64 0.22-3build4 [33.1 kB]
+Get:42 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libpython3.8-dev amd64 3.8.10-0ubuntu1~20.04.8 [3950 kB]
+Get:43 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 libpython3-dev amd64 3.8.2-0ubuntu2 [7236 B]
+Get:44 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 manpages-dev all 5.05-1 [2266 kB]
+Get:45 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/universe amd64 python-pip-whl all 20.0.2-5ubuntu1.10 [1805 kB]
+Get:46 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 zlib1g-dev amd64 1:1.2.11.dfsg-2ubuntu1.5 [155 kB]
+Get:47 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 python3.8-dev amd64 3.8.10-0ubuntu1~20.04.8 [514 kB]
+Get:48 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal/main amd64 python3-dev amd64 3.8.2-0ubuntu2 [1212 B]
+Get:49 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/universe amd64 python3-wheel all 0.34.2-1ubuntu0.1 [23.9 kB]
+Get:50 http://us-west-2.ec2.archive.ubuntu.com/ubuntu focal-updates/universe amd64 python3-pip all 20.0.2-5ubuntu1.10 [231 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+Fetched 52.2 MB in 1s (51.5 MB/s)
+Selecting previously unselected package binutils-common:amd64.
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 64153 files and directories currently installed.)
+Preparing to unpack .../00-binutils-common_2.34-6ubuntu1.6_amd64.deb ...
+Unpacking binutils-common:amd64 (2.34-6ubuntu1.6) ...
+Selecting previously unselected package libbinutils:amd64.
+Preparing to unpack .../01-libbinutils_2.34-6ubuntu1.6_amd64.deb ...
+Unpacking libbinutils:amd64 (2.34-6ubuntu1.6) ...
+Selecting previously unselected package libctf-nobfd0:amd64.
+Preparing to unpack .../02-libctf-nobfd0_2.34-6ubuntu1.6_amd64.deb ...
+Unpacking libctf-nobfd0:amd64 (2.34-6ubuntu1.6) ...
+Selecting previously unselected package libctf0:amd64.
+Preparing to unpack .../03-libctf0_2.34-6ubuntu1.6_amd64.deb ...
+Unpacking libctf0:amd64 (2.34-6ubuntu1.6) ...
+Selecting previously unselected package binutils-x86-64-linux-gnu.
+Preparing to unpack .../04-binutils-x86-64-linux-gnu_2.34-6ubuntu1.6_amd64.deb ...
+Unpacking binutils-x86-64-linux-gnu (2.34-6ubuntu1.6) ...
+Selecting previously unselected package binutils.
+Preparing to unpack .../05-binutils_2.34-6ubuntu1.6_amd64.deb ...
+Unpacking binutils (2.34-6ubuntu1.6) ...
+Selecting previously unselected package libc-dev-bin.
+Preparing to unpack .../06-libc-dev-bin_2.31-0ubuntu9.12_amd64.deb ...
+Unpacking libc-dev-bin (2.31-0ubuntu9.12) ...
+Selecting previously unselected package linux-libc-dev:amd64.
+Preparing to unpack .../07-linux-libc-dev_5.4.0-167.184_amd64.deb ...
+Unpacking linux-libc-dev:amd64 (5.4.0-167.184) ...
+Selecting previously unselected package libcrypt-dev:amd64.
+Preparing to unpack .../08-libcrypt-dev_1%3a4.4.10-10ubuntu4_amd64.deb ...
+Unpacking libcrypt-dev:amd64 (1:4.4.10-10ubuntu4) ...
+Selecting previously unselected package libc6-dev:amd64.
+Preparing to unpack .../09-libc6-dev_2.31-0ubuntu9.12_amd64.deb ...
+Unpacking libc6-dev:amd64 (2.31-0ubuntu9.12) ...
+Selecting previously unselected package gcc-9-base:amd64.
+Preparing to unpack .../10-gcc-9-base_9.4.0-1ubuntu1~20.04.2_amd64.deb ...
+Unpacking gcc-9-base:amd64 (9.4.0-1ubuntu1~20.04.2) ...
+Selecting previously unselected package libisl22:amd64.
+Preparing to unpack .../11-libisl22_0.22.1-1_amd64.deb ...
+Unpacking libisl22:amd64 (0.22.1-1) ...
+Selecting previously unselected package libmpc3:amd64.
+Preparing to unpack .../12-libmpc3_1.1.0-1_amd64.deb ...
+Unpacking libmpc3:amd64 (1.1.0-1) ...
+Selecting previously unselected package cpp-9.
+Preparing to unpack .../13-cpp-9_9.4.0-1ubuntu1~20.04.2_amd64.deb ...
+Unpacking cpp-9 (9.4.0-1ubuntu1~20.04.2) ...
+Selecting previously unselected package cpp.
+Preparing to unpack .../14-cpp_4%3a9.3.0-1ubuntu2_amd64.deb ...
+Unpacking cpp (4:9.3.0-1ubuntu2) ...
+Selecting previously unselected package libcc1-0:amd64.
+Preparing to unpack .../15-libcc1-0_10.5.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking libcc1-0:amd64 (10.5.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libgomp1:amd64.
+Preparing to unpack .../16-libgomp1_10.5.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking libgomp1:amd64 (10.5.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libitm1:amd64.
+Preparing to unpack .../17-libitm1_10.5.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking libitm1:amd64 (10.5.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libatomic1:amd64.
+Preparing to unpack .../18-libatomic1_10.5.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking libatomic1:amd64 (10.5.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libasan5:amd64.
+Preparing to unpack .../19-libasan5_9.4.0-1ubuntu1~20.04.2_amd64.deb ...
+Unpacking libasan5:amd64 (9.4.0-1ubuntu1~20.04.2) ...
+Selecting previously unselected package liblsan0:amd64.
+Preparing to unpack .../20-liblsan0_10.5.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking liblsan0:amd64 (10.5.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libtsan0:amd64.
+Preparing to unpack .../21-libtsan0_10.5.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking libtsan0:amd64 (10.5.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libubsan1:amd64.
+Preparing to unpack .../22-libubsan1_10.5.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking libubsan1:amd64 (10.5.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libquadmath0:amd64.
+Preparing to unpack .../23-libquadmath0_10.5.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking libquadmath0:amd64 (10.5.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libgcc-9-dev:amd64.
+Preparing to unpack .../24-libgcc-9-dev_9.4.0-1ubuntu1~20.04.2_amd64.deb ...
+Unpacking libgcc-9-dev:amd64 (9.4.0-1ubuntu1~20.04.2) ...
+Selecting previously unselected package gcc-9.
+Preparing to unpack .../25-gcc-9_9.4.0-1ubuntu1~20.04.2_amd64.deb ...
+Unpacking gcc-9 (9.4.0-1ubuntu1~20.04.2) ...
+Selecting previously unselected package gcc.
+Preparing to unpack .../26-gcc_4%3a9.3.0-1ubuntu2_amd64.deb ...
+Unpacking gcc (4:9.3.0-1ubuntu2) ...
+Selecting previously unselected package libstdc++-9-dev:amd64.
+Preparing to unpack .../27-libstdc++-9-dev_9.4.0-1ubuntu1~20.04.2_amd64.deb ...
+Unpacking libstdc++-9-dev:amd64 (9.4.0-1ubuntu1~20.04.2) ...
+Selecting previously unselected package g++-9.
+Preparing to unpack .../28-g++-9_9.4.0-1ubuntu1~20.04.2_amd64.deb ...
+Unpacking g++-9 (9.4.0-1ubuntu1~20.04.2) ...
+Selecting previously unselected package g++.
+Preparing to unpack .../29-g++_4%3a9.3.0-1ubuntu2_amd64.deb ...
+Unpacking g++ (4:9.3.0-1ubuntu2) ...
+Selecting previously unselected package make.
+Preparing to unpack .../30-make_4.2.1-1.2_amd64.deb ...
+Unpacking make (4.2.1-1.2) ...
+Selecting previously unselected package libdpkg-perl.
+Preparing to unpack .../31-libdpkg-perl_1.19.7ubuntu3.2_all.deb ...
+Unpacking libdpkg-perl (1.19.7ubuntu3.2) ...
+Selecting previously unselected package dpkg-dev.
+Preparing to unpack .../32-dpkg-dev_1.19.7ubuntu3.2_all.deb ...
+Unpacking dpkg-dev (1.19.7ubuntu3.2) ...
+Selecting previously unselected package build-essential.
+Preparing to unpack .../33-build-essential_12.8ubuntu1.1_amd64.deb ...
+Unpacking build-essential (12.8ubuntu1.1) ...
+Selecting previously unselected package libfakeroot:amd64.
+Preparing to unpack .../34-libfakeroot_1.24-1_amd64.deb ...
+Unpacking libfakeroot:amd64 (1.24-1) ...
+Selecting previously unselected package fakeroot.
+Preparing to unpack .../35-fakeroot_1.24-1_amd64.deb ...
+Unpacking fakeroot (1.24-1) ...
+Selecting previously unselected package libalgorithm-diff-perl.
+Preparing to unpack .../36-libalgorithm-diff-perl_1.19.03-2_all.deb ...
+Unpacking libalgorithm-diff-perl (1.19.03-2) ...
+Selecting previously unselected package libalgorithm-diff-xs-perl.
+Preparing to unpack .../37-libalgorithm-diff-xs-perl_0.04-6_amd64.deb ...
+Unpacking libalgorithm-diff-xs-perl (0.04-6) ...
+Selecting previously unselected package libalgorithm-merge-perl.
+Preparing to unpack .../38-libalgorithm-merge-perl_0.08-3_all.deb ...
+Unpacking libalgorithm-merge-perl (0.08-3) ...
+Selecting previously unselected package libexpat1-dev:amd64.
+Preparing to unpack .../39-libexpat1-dev_2.2.9-1ubuntu0.6_amd64.deb ...
+Unpacking libexpat1-dev:amd64 (2.2.9-1ubuntu0.6) ...
+Selecting previously unselected package libfile-fcntllock-perl.
+Preparing to unpack .../40-libfile-fcntllock-perl_0.22-3build4_amd64.deb ...
+Unpacking libfile-fcntllock-perl (0.22-3build4) ...
+Selecting previously unselected package libpython3.8-dev:amd64.
+Preparing to unpack .../41-libpython3.8-dev_3.8.10-0ubuntu1~20.04.8_amd64.deb ...
+Unpacking libpython3.8-dev:amd64 (3.8.10-0ubuntu1~20.04.8) ...
+Selecting previously unselected package libpython3-dev:amd64.
+Preparing to unpack .../42-libpython3-dev_3.8.2-0ubuntu2_amd64.deb ...
+Unpacking libpython3-dev:amd64 (3.8.2-0ubuntu2) ...
+Selecting previously unselected package manpages-dev.
+Preparing to unpack .../43-manpages-dev_5.05-1_all.deb ...
+Unpacking manpages-dev (5.05-1) ...
+Selecting previously unselected package python-pip-whl.
+Preparing to unpack .../44-python-pip-whl_20.0.2-5ubuntu1.10_all.deb ...
+Unpacking python-pip-whl (20.0.2-5ubuntu1.10) ...
+Selecting previously unselected package zlib1g-dev:amd64.
+Preparing to unpack .../45-zlib1g-dev_1%3a1.2.11.dfsg-2ubuntu1.5_amd64.deb ...
+Unpacking zlib1g-dev:amd64 (1:1.2.11.dfsg-2ubuntu1.5) ...
+Selecting previously unselected package python3.8-dev.
+Preparing to unpack .../46-python3.8-dev_3.8.10-0ubuntu1~20.04.8_amd64.deb ...
+Unpacking python3.8-dev (3.8.10-0ubuntu1~20.04.8) ...
+Selecting previously unselected package python3-dev.
+Preparing to unpack .../47-python3-dev_3.8.2-0ubuntu2_amd64.deb ...
+Unpacking python3-dev (3.8.2-0ubuntu2) ...
+Selecting previously unselected package python3-wheel.
+Preparing to unpack .../48-python3-wheel_0.34.2-1ubuntu0.1_all.deb ...
+Unpacking python3-wheel (0.34.2-1ubuntu0.1) ...
+Selecting previously unselected package python3-pip.
+Preparing to unpack .../49-python3-pip_20.0.2-5ubuntu1.10_all.deb ...
+Unpacking python3-pip (20.0.2-5ubuntu1.10) ...
+Setting up manpages-dev (5.05-1) ...
+Setting up libfile-fcntllock-perl (0.22-3build4) ...
+Setting up libalgorithm-diff-perl (1.19.03-2) ...
+Setting up binutils-common:amd64 (2.34-6ubuntu1.6) ...
+Setting up linux-libc-dev:amd64 (5.4.0-167.184) ...
+Setting up libctf-nobfd0:amd64 (2.34-6ubuntu1.6) ...
+Setting up libgomp1:amd64 (10.5.0-1ubuntu1~20.04) ...
+Setting up python3-wheel (0.34.2-1ubuntu0.1) ...
+Setting up libfakeroot:amd64 (1.24-1) ...
+Setting up fakeroot (1.24-1) ...
+update-alternatives: using /usr/bin/fakeroot-sysv to provide /usr/bin/fakeroot (fakeroot) in auto mode
+Setting up make (4.2.1-1.2) ...
+Setting up libquadmath0:amd64 (10.5.0-1ubuntu1~20.04) ...
+Setting up libmpc3:amd64 (1.1.0-1) ...
+Setting up libatomic1:amd64 (10.5.0-1ubuntu1~20.04) ...
+Setting up libdpkg-perl (1.19.7ubuntu3.2) ...
+Setting up libubsan1:amd64 (10.5.0-1ubuntu1~20.04) ...
+Setting up libcrypt-dev:amd64 (1:4.4.10-10ubuntu4) ...
+Setting up libisl22:amd64 (0.22.1-1) ...
+Setting up python-pip-whl (20.0.2-5ubuntu1.10) ...
+Setting up libbinutils:amd64 (2.34-6ubuntu1.6) ...
+Setting up libc-dev-bin (2.31-0ubuntu9.12) ...
+Setting up libalgorithm-diff-xs-perl (0.04-6) ...
+Setting up libcc1-0:amd64 (10.5.0-1ubuntu1~20.04) ...
+Setting up liblsan0:amd64 (10.5.0-1ubuntu1~20.04) ...
+Setting up libitm1:amd64 (10.5.0-1ubuntu1~20.04) ...
+Setting up gcc-9-base:amd64 (9.4.0-1ubuntu1~20.04.2) ...
+Setting up libalgorithm-merge-perl (0.08-3) ...
+Setting up libtsan0:amd64 (10.5.0-1ubuntu1~20.04) ...
+Setting up libctf0:amd64 (2.34-6ubuntu1.6) ...
+Setting up libasan5:amd64 (9.4.0-1ubuntu1~20.04.2) ...
+Setting up python3-pip (20.0.2-5ubuntu1.10) ...
+Setting up cpp-9 (9.4.0-1ubuntu1~20.04.2) ...
+Setting up libc6-dev:amd64 (2.31-0ubuntu9.12) ...
+Setting up binutils-x86-64-linux-gnu (2.34-6ubuntu1.6) ...
+Setting up binutils (2.34-6ubuntu1.6) ...
+Setting up dpkg-dev (1.19.7ubuntu3.2) ...
+Setting up libgcc-9-dev:amd64 (9.4.0-1ubuntu1~20.04.2) ...
+Setting up libexpat1-dev:amd64 (2.2.9-1ubuntu0.6) ...
+Setting up libpython3.8-dev:amd64 (3.8.10-0ubuntu1~20.04.8) ...
+Setting up zlib1g-dev:amd64 (1:1.2.11.dfsg-2ubuntu1.5) ...
+Setting up cpp (4:9.3.0-1ubuntu2) ...
+Setting up gcc-9 (9.4.0-1ubuntu1~20.04.2) ...
+Setting up libpython3-dev:amd64 (3.8.2-0ubuntu2) ...
+Setting up libstdc++-9-dev:amd64 (9.4.0-1ubuntu1~20.04.2) ...
+Setting up gcc (4:9.3.0-1ubuntu2) ...
+Setting up g++-9 (9.4.0-1ubuntu1~20.04.2) ...
+Setting up python3.8-dev (3.8.10-0ubuntu1~20.04.8) ...
+Setting up g++ (4:9.3.0-1ubuntu2) ...
+update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+Setting up build-essential (12.8ubuntu1.1) ...
+Setting up python3-dev (3.8.2-0ubuntu2) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.12) ...
+[Pipeline] sh
++ python3 --version
+Python 3.8.10
+[Pipeline] sh
++ pip3 --version
+pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)
+[Pipeline] sh
++ ls -la
+total 32
+drwxrwxr-x 5 ubuntu ubuntu 4096 Nov 25 16:47 .
+drwxrwxr-x 4 ubuntu ubuntu 4096 Nov 25 16:47 ..
+drwxrwxr-x 8 ubuntu ubuntu 4096 Nov 25 16:47 .git
+drwxrwxr-x 3 ubuntu ubuntu 4096 Nov 25 16:47 .github
+-rw-rw-r-- 1 ubuntu ubuntu   57 Nov 25 16:47 Dockerfile
+-rw-rw-r-- 1 ubuntu ubuntu 1617 Nov 25 16:47 Jenkinsfile
+-rw-rw-r-- 1 ubuntu ubuntu  445 Nov 25 16:47 README.md
+drwxrwxr-x 2 ubuntu ubuntu 4096 Nov 25 16:47 theProject
+[Pipeline] sh
++ pip3 install -r theProject/requirements.txt
+Collecting pytest
+  Downloading pytest-7.4.3-py3-none-any.whl (325 kB)
+Collecting iniconfig
+  Downloading iniconfig-2.0.0-py3-none-any.whl (5.9 kB)
+Collecting packaging
+  Downloading packaging-23.2-py3-none-any.whl (53 kB)
+Collecting pluggy<2.0,>=0.12
+  Downloading pluggy-1.3.0-py3-none-any.whl (18 kB)
+Collecting exceptiongroup>=1.0.0rc8; python_version < "3.11"
+  Downloading exceptiongroup-1.2.0-py3-none-any.whl (16 kB)
+Collecting tomli>=1.0.0; python_version < "3.11"
+  Downloading tomli-2.0.1-py3-none-any.whl (12 kB)
+Installing collected packages: iniconfig, packaging, pluggy, exceptiongroup, tomli, pytest
+  WARNING: The scripts py.test and pytest are installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed exceptiongroup-1.2.0 iniconfig-2.0.0 packaging-23.2 pluggy-1.3.0 pytest-7.4.3 tomli-2.0.1
+[Pipeline] sh
++ python3 -m py_compile theProject/run.py
+[Pipeline] stash
+Stashed 4 file(s)
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] node
+Running on EC2 (aws1) - AMI (i-07dc9db33e5c35966) in /home/ubuntu/workspace/project2
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+ > git rev-parse --resolve-git-dir /home/ubuntu/workspace/project2/.git # timeout=10
+ > git config remote.origin.url https://github.com/PavelPll/CI_CD.git # timeout=10
+Fetching upstream changes from https://github.com/PavelPll/CI_CD.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+ > git fetch --tags --force --progress -- https://github.com/PavelPll/CI_CD.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision cb435bc0d4397e67d958dfa3a49cfdb13bfe8880 (refs/remotes/origin/main)
+Commit message: "Update Dockerfile"
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f cb435bc0d4397e67d958dfa3a49cfdb13bfe8880 # timeout=10
++ python3 -m pytest -v --junit-xml test-reports/results.xml ./theProject
+============================= test session starts ==============================
+platform linux -- Python 3.8.10, pytest-7.4.3, pluggy-1.3.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/ubuntu/workspace/project2
+collecting ... collected 10 items
+
+theProject/test_vendingmachine.py::test_drinkExpiration PASSED           [ 10%]
+theProject/test_vendingmachine.py::test_freeSpaceForDrinks PASSED        [ 20%]
+theProject/test_vendingmachine.py::test_removeExpiredDrinks[1-10] PASSED [ 30%]
+theProject/test_vendingmachine.py::test_removeExpiredDrinks[8-5] PASSED  [ 40%]
+theProject/test_vendingmachine.py::test_removeExpiredDrinks[61-0] PASSED [ 50%]
+theProject/vendingmachine_test.py::test_drinkExpiration PASSED           [ 60%]
+theProject/vendingmachine_test.py::test_freeSpaceForDrinks PASSED        [ 70%]
+theProject/vendingmachine_test.py::test_removeExpiredDrinks[1-10] PASSED [ 80%]
+theProject/vendingmachine_test.py::test_removeExpiredDrinks[8-5] PASSED  [ 90%]
+theProject/vendingmachine_test.py::test_removeExpiredDrinks[61-0] PASSED [100%]
+
+- generated xml file: /home/ubuntu/workspace/project2/test-reports/results.xml -
+============================== 10 passed in 0.04s ==============================
+Post stage
+[Pipeline] junit
+Enregistrement des résultats des tests
+[Checks API] No suitable checks publisher found.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deliver)
+[Pipeline] node
+Running on EC2 (aws1) - AMI (i-07dc9db33e5c35966) in /home/ubuntu/workspace/project2
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+ > git rev-parse --resolve-git-dir /home/ubuntu/workspace/project2/.git # timeout=10
+ > git config remote.origin.url https://github.com/PavelPll/CI_CD.git # timeout=10
+Fetching upstream changes from https://github.com/PavelPll/CI_CD.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+ > git fetch --tags --force --progress -- https://github.com/PavelPll/CI_CD.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision cb435bc0d4397e67d958dfa3a49cfdb13bfe8880 (refs/remotes/origin/main)
+Commit message: "Update Dockerfile"
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /home/ubuntu/workspace/project2/86
+[Pipeline] {
+[Pipeline] unstash
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f cb435bc0d4397e67d958dfa3a49cfdb13bfe8880 # timeout=10
+[Pipeline] sh
++ sudo docker image build ../ -t py2bin:latest
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  225.8kB
+
+Step 1/2 : FROM cdrx/pyinstaller-linux
+latest: Pulling from cdrx/pyinstaller-linux
+d8868e50ac4c: Pulling fs layer
+83251ac64627: Pulling fs layer
+589bba2f1b36: Pulling fs layer
+d62ecaceda39: Pulling fs layer
+6d93b41cfc6b: Pulling fs layer
+491ca693221a: Pulling fs layer
+c17498b3317b: Pulling fs layer
+d62ecaceda39: Waiting
+6d93b41cfc6b: Waiting
+491ca693221a: Waiting
+c17498b3317b: Waiting
+589bba2f1b36: Verifying Checksum
+589bba2f1b36: Download complete
+83251ac64627: Verifying Checksum
+83251ac64627: Download complete
+d62ecaceda39: Verifying Checksum
+d62ecaceda39: Download complete
+6d93b41cfc6b: Verifying Checksum
+6d93b41cfc6b: Download complete
+491ca693221a: Verifying Checksum
+491ca693221a: Download complete
+d8868e50ac4c: Verifying Checksum
+d8868e50ac4c: Download complete
+c17498b3317b: Verifying Checksum
+c17498b3317b: Download complete
+d8868e50ac4c: Pull complete
+83251ac64627: Pull complete
+589bba2f1b36: Pull complete
+d62ecaceda39: Pull complete
+6d93b41cfc6b: Pull complete
+491ca693221a: Pull complete
+c17498b3317b: Pull complete
+Digest: sha256:26267c59316bcf253b3f885a638f0ebffb98bc4e125013b6a2b2113774170604
+Status: Downloaded newer image for cdrx/pyinstaller-linux:latest
+ ---> 5601d84d1be0
+Step 2/2 : RUN pip install numpy tqdm
+ ---> Running in 13ae99f869dd
+[91mbash: cannot set terminal process group (-1): Inappropriate ioctl for device
+bash: no job control in this shell
+[0mCollecting numpy
+  Downloading https://files.pythonhosted.org/packages/6d/ad/ff3b21ebfe79a4d25b4a4f8e5cf9fd44a204adb6b33c09010f566f51027a/numpy-1.21.6-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (15.7MB)
+Collecting tqdm
+  Downloading https://files.pythonhosted.org/packages/00/e5/f12a80907d0884e6dff9c16d0c0114d81b8cd07dc3ae54c5e962cc83037e/tqdm-4.66.1-py3-none-any.whl (78kB)
+Installing collected packages: numpy, tqdm
+Successfully installed numpy-1.21.6 tqdm-4.66.1
+[91mWARNING: You are using pip version 19.3.1; however, version 23.3.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+[0mRemoving intermediate container 13ae99f869dd
+ ---> e694a131be92
+Successfully built e694a131be92
+Successfully tagged py2bin:latest
+[Pipeline] sh
++ pwd
++ sudo docker run --rm -v /home/ubuntu/workspace/project2/86:/src py2bin pyinstaller -F --hidden-import numpy --hidden-import tqdm theProject/run.py
+bash: cannot set terminal process group (-1): Inappropriate ioctl for device
+bash: no job control in this shell
+pyinstaller -F --hidden-import numpy --hidden-import tqdm theProject/run.py
+77 INFO: PyInstaller: 3.6
+78 INFO: Python: 3.7.5
+80 INFO: Platform: Linux-5.15.0-1048-aws-x86_64-with-debian-wheezy-sid
+80 INFO: wrote /src/run.spec
+94 INFO: UPX is available.
+95 INFO: Extending PYTHONPATH with paths
+['/src/theProject', '/src']
+96 INFO: checking Analysis
+96 INFO: Building Analysis because Analysis-00.toc is non existent
+96 INFO: Initializing module dependency graph...
+98 INFO: Caching module graph hooks...
+104 INFO: Analyzing base_library.zip ...
+3539 INFO: Caching module dependency graph...
+3636 INFO: running Analysis Analysis-00.toc
+3660 INFO: Analyzing /src/theProject/run.py
+4095 INFO: Processing pre-find module path hook   distutils
+4096 INFO: distutils: retargeting to non-venv dir '/root/.pyenv/versions/3.7.5/lib/python3.7'
+5298 INFO: Processing pre-safe import module hook   setuptools.extern.six.moves
+5685 INFO: Processing pre-find module path hook   site
+5686 INFO: site: retargeting to fake-dir '/root/.pyenv/versions/3.7.5/lib/python3.7/site-packages/PyInstaller/fake-modules'
+8428 INFO: Processing module hooks...
+8429 INFO: Loading module hook "hook-encodings.py"...
+8487 INFO: Loading module hook "hook-setuptools.py"...
+9048 INFO: Loading module hook "hook-pkg_resources.py"...
+9267 INFO: Processing pre-safe import module hook   win32com
+9475 INFO: Excluding import '__main__'
+9477 INFO:   Removing import of __main__ from module pkg_resources
+9477 INFO: Loading module hook "hook-numpy.py"...
+9478 INFO: Loading module hook "hook-distutils.py"...
+9482 INFO: Loading module hook "hook-sysconfig.py"...
+9491 INFO: Loading module hook "hook-lib2to3.py"...
+9494 INFO: Loading module hook "hook-pydoc.py"...
+9495 INFO: Loading module hook "hook-xml.py"...
+9545 INFO: Loading module hook "hook-numpy.core.py"...
+9684 INFO: Looking for ctypes DLLs
+9779 INFO: Analyzing run-time hooks ...
+9789 INFO: Including run-time hook 'pyi_rth_multiprocessing.py'
+9794 INFO: Including run-time hook 'pyi_rth_pkgres.py'
+9806 INFO: Looking for dynamic libraries
+10539 INFO: Looking for eggs
+10539 INFO: Using Python library /root/.pyenv/versions/3.7.5/lib/libpython3.7m.so.1.0
+10554 INFO: Warnings written to /src/build/run/warn-run.txt
+10623 INFO: Graph cross-reference written to /src/build/run/xref-run.html
+10650 INFO: checking PYZ
+10651 INFO: Building PYZ because PYZ-00.toc is non existent
+10651 INFO: Building PYZ (ZlibArchive) /src/build/run/PYZ-00.pyz
+11486 INFO: Building PYZ (ZlibArchive) /src/build/run/PYZ-00.pyz completed successfully.
+11501 INFO: checking PKG
+11501 INFO: Building PKG because PKG-00.toc is non existent
+11501 INFO: Building PKG (CArchive) PKG-00.pkg
+26088 INFO: Building PKG (CArchive) PKG-00.pkg completed successfully.
+26092 INFO: Bootloader /root/.pyenv/versions/3.7.5/lib/python3.7/site-packages/PyInstaller/bootloader/Linux-64bit/run
+26092 INFO: checking EXE
+26093 INFO: Building EXE because EXE-00.toc is non existent
+26093 INFO: Building EXE from EXE-00.toc
+26094 INFO: Appending archive to ELF section in EXE /src/dist/run
+26261 INFO: Building EXE from EXE-00.toc completed successfully.
+[Pipeline] }
+[Pipeline] // dir
+Post stage
+[Pipeline] archiveArtifacts
+Archiving artifacts
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] End of Pipeline
+Finished: SUCCESS
