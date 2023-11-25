@@ -1,4 +1,5 @@
 from vendingmachine import VendingMachine, Jus, DataCola, noFreeSpaceInVendingMachine
+from noFreeSpaceInVendingMachine
 import pytest
 
 # Initialize two drink instances jus1 and datacola1
