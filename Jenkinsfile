@@ -14,6 +14,7 @@ pipeline {
 
                 sh 'python3 -m py_compile theProject/run.py'
                 stash(name: 'compiled-results', includes: 'theProject/run.py*')
+                stash(name: 'compiled-results', includes: 'theProject/vendingmachine*')
             }
         }
         stage('Test') {
