@@ -36,16 +36,16 @@ pipeline {
             steps {
                 //dir(path: "run/" + env.BUILD_ID) {
                 //dir(path: "CI_CD_githubActions/" ) {
-                //dir(path: "env.BUILD_ID) {
+                dir(path: "env.BUILD_ID") {
                     // unstash(name: 'compiled-results')
 
                     sh 'sudo docker image build . -t py2bin:latest'
                     //sh "sudo docker run --rm -v ${VOLUME} py2bin 'pyinstaller -F --hidden-import numpy --hidden-import tqdm theProject/run.py'"
-                sh "sudo docker run --rm -v ${VOLUME} py2bin 'pyinstaller -F --hidden-import numpy --hidden-import tqdm theProject/run.py'"
+                sh "sudo docker run --rm -v ${VOLUME} py2bin 'pyinstaller -F --hidden-import numpy --hidden-import tqdm ./run.py'"
                     sh 'pwd'
                     sh 'pwd'
 
-              //  }
+                }
                 sh 'pwd'
                 sh 'pwd'
                 sh 'echo "hello deliver"'
