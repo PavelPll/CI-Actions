@@ -52,10 +52,9 @@ press create
 Amazon EC2 Credentials: specify AWS_ACCESS_KEY and AWS_SECRET_KEY of IAM AWS user
 Region: us-west2 (in my case)
 EC2 Key Pair's Private Key: aws.pem (the key I am using to ssh AWS instance from my laptop)
-
-AMI ID: ami-08e2c1a8d17c2fe17 (copy/paste any AMI with ubuntu 20.04 from your AWS account)
+AMI ID: ami-... (copy/paste any AMI with ubuntu 20.04 from your AWS account)
 Instance type: t2.micro
-Security group names: sg-05cf0390981be3863 (copy/paste the security group from your AWS account)
+Security group names: sg-... (copy/paste the security group from your AWS account)
 Remote FS root: /home/ubuntu
 Remote user: ubuntu
 AMI type: unix
@@ -68,5 +67,6 @@ Init script:
     sudo apt install openjdk-11-jdk -y
     It is better to include Java installation to the AMI
     Or ssh the node of Jenkins agent and install Java manually
-Subnet Ids for vpc: subnet-92fef2c8 (copy/paste Subnet ID from your AWS account)
+    My version of Jenkins uses Java11
+Subnet Ids for vpc: subnet-... (copy/paste Subnet ID from your AWS account)
 Minimum number of instances: 1
