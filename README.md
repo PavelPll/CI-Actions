@@ -1,6 +1,6 @@
 # Run CICD pipeline for the given Project on Github VM using Actions and on AWS cloud using Jenkins. 
 I installed Jenkins on my Laptop (Built-In Node) and I configured Jenkins agent to run all jobs in AWS cloud (for technical details see **Jenkins_configuration.txt**). The CICD pipeline was deveveloped in the following order.
-* Define the project for CICD. The description of the project, in a nutshell: The class VendingMachine **_(the subclass of the class Drink)_** can be filled by Drinks **_(Jus or Datacola - other child of the class Drink)_** in two kinds of beverageContainer **_(can or bottle)_** with different numbers of days before expiration. The code see in the folder theProject: (i) The class is defined in **vendingmachine.py**; (ii) The first version of the Unit testing is in **test_vendingmachine.py**; (iii) The API is givent by **run.py**.
+* Define the project for CICD. The description of the project, in a nutshell: The class VendingMachine **_(the subclass of the class Drink)_** can be filled by Drinks **(_Jus or Datacola - other child of the class Drink_)** in two kinds of beverageContainer **(_can or bottle_)** with different numbers of days before expiration. The code see in the folder theProject: (i) The class is defined in **vendingmachine.py**; (ii) The first version of the Unit testing is in **test_vendingmachine.py**; (iii) The API is givent by **run.py**.
 
 
 
