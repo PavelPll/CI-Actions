@@ -5,4 +5,4 @@ I installed Jenkins on my Laptop (Built-In Node) and I configured Jenkins agent 
 * Write the second CICD pipeline (for details see **Jenkinsfile**). Three stages are included: (i) Build - to launch the AWS instance (if it does not exist) and set up the working environment. I need Python and Docker (this is because I will use one Docker image latter to compile the API to the single binary file); (ii) Test - to run Unit testing and pass the result to Jenkins to be able to see it in a real time using Jenkins UI; (iii) Deliver - to compile the project to the single binary file and its automatic upload to my laptop from AWS cloud.
 
 > [!NOTE]
-> The output of CICD from AWS node console in Jenkins console is in **Jenkins_output.txt**. 
+> The output of CICD from AWS node console in Jenkins console is in **Jenkins_output.txt**. Lines 540-547 correspont to the Unit Test using pytest.
