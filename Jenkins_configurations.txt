@@ -1,4 +1,6 @@
 ***INSTALL Jenkins on my Laptop avec ubuntu 22.04***
+***CONFIGURE Jenkins Agent on AWS cloud avec ubuntu 20.04***
+
 (1) INSTALL Java
 java version vs jenkins version:
 https://www.jenkins.io/doc/book/platform-information/support-policy-java/
@@ -29,3 +31,42 @@ Install suggested plugins
 define username
 and 
 password 
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+
+***CONFIGURE Jenkins Agent on AWS cloud with ubuntu 20.04 installed***
+(1) On AWS cloud create IAM User and get his AWS_ACCESS_KEY and AWS_SECRET_KEY
+For the detailed instruction, how to do it, see README.md for another project in the Current repository:
+https://github.com/PavelPll/Databases/tree/main/S3_bucket 
+For  permissions add: AmazonEC2FullAccess.
+	
+(2) INSTALL plugin EC2 Amazon for Jenkins on the laptop
+
+(3) CONFIGURE Cloud on Jenkins website
+GO to Manage Jenkins -> Clouds -> New cloud 
+Name: aws1 (any name)
+and choose: "amazon ec2" 
+press create
+
+(3) Configure aws1:
+Amazon EC2 Credentials: specify AWS_ACCESS_KEY and AWS_SECRET_KEY of IAM AWS user
+Region: us-west2 (in my case)
+EC2 Key Pair's Private Key: aws.pem (the key I am using to ssh AWS instance from my laptop)
+
+AMI ID: ami-08e2c1a8d17c2fe17 (copy/paste any AMI with ubuntu 20.04 from your AWS account)
+Instance type: t2.micro
+Security group names: sg-05cf0390981be3863 (copy/paste the security group from your AWS account)
+Remote FS root: /home/ubuntu
+Remote user: ubuntu
+AMI type: unix
+Labels: aws-agent1 ("aws-agent1" is for defining the AWS agent in the Jenkinsfile)
+Use this node as much as possible
+Number of executors 2
+Init script: 
+    #!/bin/bash
+    sudo apt update
+    sudo apt install openjdk-11-jdk -y
+    It is better to include Java installation to the AMI
+    Or ssh the node of Jenkins agent and install Java manually
+Subnet Ids for vpc: subnet-92fef2c8 (copy/paste Subnet ID from your AWS account)
+Minimum number of instances: 1
